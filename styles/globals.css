@@ -14,3 +14,19 @@ a {
 * {
   box-sizing: border-box;
 }
+
+code {
+  font-family: monospace;
+  font-size: 16px;
+}
+
+.output {
+  background-color: #e9e5e5;
+  padding: 20px;
+  border-radius: 10px;
+
+  color: rgb(109, 9, 9);
+  font-family: monospace;
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
