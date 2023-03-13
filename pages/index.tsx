@@ -53,7 +53,7 @@ const Home: NextPage = () => {
           <code>3. Next, we create the keccak hash of the string &quot;\x19Ethereum Signed Message:\n{toUtf8Bytes(String(message?.length || 0))}{message ? toUtf8Bytes(message) : ""}&quot;</code><br/>
           {<div className="output">{hashMessage(message)}</div>}
           
-          <code>4. We sign the hash from step 2 using the private key and get values (r, s, v).</code><br/>
+          <code>4. We sign the hash from step 3 with secp256k1 using the private key and get values (r, s, v).</code><br/>
           {signature && <div className="output">
             r: {signature.r} <br/>
             s: {signature.s} <br/>
