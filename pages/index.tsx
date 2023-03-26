@@ -1,10 +1,10 @@
 import { ConnectKitButton, ConnectKitProvider, getDefaultClient } from 'connectkit'
 import { Wallet } from 'ethers'
-import { hashMessage, recoverAddress, toUtf8Bytes, toUtf8String } from 'ethers/lib/utils'
+import { hashMessage, recoverAddress, toUtf8Bytes } from 'ethers/lib/utils'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
-import { createClient, useSignMessage, WagmiConfig } from 'wagmi'
+import { createClient, useSignMessage, WagmiConfig, useAccount } from 'wagmi'
 
 const DEFAULT_PRIVATE_KEY = '8da4ef21b864d2cc526dbdb2a120bd2874c36c9d0a1fb7f8c63d7f7a8b41de8f' // unsafe to use for realsies
 const wallet = new Wallet(DEFAULT_PRIVATE_KEY)
@@ -136,6 +136,8 @@ const Home: NextPage = () => {
 
 function SignMessageButton({ message, onSignature }: { message: string, onSignature: (signature: SignatureInfo) => void }) {
   const { signMessageAsync } = useSignMessage()
+  const { address } = useAccount() 
+
   const sign = async () => {
     try {
       const signature = await signMessageAsync({ message })
@@ -143,8 +145,9 @@ function SignMessageButton({ message, onSignature }: { message: string, onSignat
     } catch (e) {
       // do nothing
     }
-
   }
+
+  if (!address) return null
 
   return (
     <button className={styles.signMessageButton} onClick={sign}>
