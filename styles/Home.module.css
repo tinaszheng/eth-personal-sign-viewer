@@ -97,3 +97,16 @@
     flex-direction: column;
   }
 }
+
+.signMessageButton {
+  padding: 8px 12px;
+  background: white;
+  border-radius: 12px;
+  border: 1px solid gray;
+  border-color: rgb(65, 68, 81, 0.3);
+  cursor: pointer;
+}
+
+.signMessageButton:hover {
+  background-color: #F6F7F9;
+}
